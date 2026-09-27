@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Validador de datos · Comité</title>
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 1.5rem 16px; line-height: 1.5; color: #23303a; background: #f7f1e6; }
+    h1 { color: #245a61; }
+    .ok { background: #dbe8d6; border-left: 6px solid #3f6b4c; padding: .8em 1em; border-radius: 8px; }
+    .mal { background: #f6ddd6; border-left: 6px solid #a8492f; padding: .8em 1em; border-radius: 8px; }
+    li { margin: .3em 0; }
+    code { background: #ede3d2; padding: 0 .3em; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Validador de datos</h1>
+  <p>Esta página revisa los archivos de <code>datos/</code>. Ábrela después de editar un texto. Si aparece un error de sintaxis (por ejemplo, una coma o comilla faltante), el navegador no podrá cargar el archivo y lo verás aquí abajo.</p>
+  <div id="salida">Cargando…</div>
+
+  <script>
+    window.__erroresCarga = [];
+    window.addEventListener("error", function (e) {
+      window.__erroresCarga.push((e.filename || "").split("/").slice(-2).join("/") + " (línea " + e.lineno + "): " + e.message);
+    });
+  </script>
+  <script src="../motor/nucleo.js"></script>
+  <!-- Mantener esta lista igual que en index.html -->
+  <script src="../datos/config.js"></script>
+  <script src="../datos/legal.js"></script>
+  <script src="../datos/comite.js"></script>
+  <script src="../datos/glosario.js"></script>
+  <script src="../datos/cuaderno.js"></script>
+  <script src="../datos/guia-docente.js"></script>
+  <script src="../datos/cap1.js"></script>
+  <script src="../arte/paleta.js"></script>
+  <script src="../arte/personajes.js"></script>
+  <script src="../arte/escenas.js"></script>
+  <script src="../motor/minijuegos/base.js"></script>
+  <script src="../motor/minijuegos/lineaTiempo.js"></script>
+  <script src="../motor/minijuegos/relacionar.js"></script>
+  <script src="validar.js"></script>
+  <script>
+    (function () {
+      const s = document.getElementById("salida");
+      function lista(titulo, arr, clase) {
+        let h = '<div class="' + clase + '"><h2>' + titulo + " (" + arr.length + ")</h2>";
+        if (arr.length) h += "<ul>" + arr.map(function (x) { return "<li>" + x.replace(/</g, "&lt;") + "</li>"; }).join("") + "</ul>";
+        return h + "</div>";
+      }
+      let html = "";
+      if (window.__erroresCarga.length) html += lista("Errores de sintaxis al cargar archivos", window.__erroresCarga, "mal");
+      try {
+        const r = validarDatos(BIO);
+        html += r.errores.length ? lista("Errores", r.errores, "mal") : '<p class="ok"><strong>Sin errores.</strong> Las referencias entre escenas, diálogos, evidencias y conceptos son correctas.</p>';
+        html += lista("Avisos (revisar, no impiden jugar)", r.avisos, "");
+      } catch (e) {
+        html += '<p class="mal">No se pudo validar: ' + e.message + "</p>";
+      }
+      s.innerHTML = html;
+    })();
+  </script>
+</body>
+</html>

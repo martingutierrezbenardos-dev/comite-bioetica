@@ -1,0 +1,154 @@
+/* =========================================================================
+   MINIJUEGOS, DELIBERACIÓN Y CIERRE
+   ========================================================================= */
+.mj-instrucciones { background: var(--papel-2); border-radius: 10px; padding: .7em 1em; margin-bottom: 1rem; }
+.mj-sub { font-size: 1rem; margin: 1rem 0 .5rem; color: var(--teal); }
+.mj-mensaje { border-radius: 10px; padding: .7em 1em; margin-bottom: 1rem; border: 2px solid var(--borde); background: #fff; }
+.mj-mensaje.aviso { border-color: var(--mostaza); background: var(--mostaza-claro); }
+.mj-mensaje.exito { border-color: var(--verde); background: var(--verde-claro); }
+.vacio { color: var(--tinta-suave); font-style: italic; }
+
+/* Tarjetas genéricas */
+.tarjeta {
+  font: inherit; font-weight: 600; cursor: pointer; text-align: left;
+  min-height: 44px; padding: .55em .8em;
+  background: var(--papel-doc); color: var(--tinta);
+  border: 2px solid var(--borde); border-radius: 10px; box-shadow: 0 2px 0 var(--borde);
+}
+.tarjeta:hover { border-color: var(--teal); }
+.tarjeta.seleccionada, .lt-casillero.seleccionada { border-color: var(--teal); background: var(--mostaza-claro); box-shadow: 0 0 0 3px var(--mostaza); }
+.tarjeta.chica { font-size: .9em; min-height: 40px; }
+
+/* Línea de tiempo */
+.lt-mesa { display: flex; flex-wrap: wrap; gap: .6rem; }
+.lt-tarjeta-envoltura { display: flex; align-items: center; gap: .3rem; }
+.lt-linea {
+  list-style: none; padding: 0 0 .4rem; margin: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: .5rem;
+  position: relative;
+}
+.lt-casillero {
+  width: 100%; min-height: 84px; font: inherit; cursor: pointer; text-align: left;
+  display: flex; flex-direction: column; gap: .2em; position: relative;
+  padding: .45em .6em; border-radius: 10px;
+  border: 2px dashed var(--madera); background: #f3e6d0; color: var(--tinta);
+}
+.lt-casillero.lleno { border-style: solid; background: var(--papel-doc); }
+.lt-casillero.correcto { border-color: var(--verde); background: var(--verde-claro); }
+.lt-casillero.incorrecto { border-color: var(--terracota); background: var(--rojo-claro); }
+.lt-num { font-weight: 800; font-size: .8em; color: var(--madera-osc); }
+.lt-etq { font-weight: 600; font-size: .92em; }
+.lt-marca { position: absolute; top: .3em; right: .5em; font-weight: 800; }
+.lt-descarte { margin-top: 1rem; }
+.lt-bandeja {
+  width: 100%; font: inherit; cursor: pointer; text-align: left;
+  min-height: 56px; padding: .6em 1em; border-radius: 10px;
+  border: 2px dashed #8a969e; background: #eef0f1; color: var(--tinta);
+}
+.lt-bandeja.activa { border-color: var(--teal); background: var(--verde-claro); }
+.lt-descartados { list-style: none; padding: 0; margin: .5rem 0 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+
+/* Relacionar / clasificar */
+.rel-det { margin-bottom: 1rem; background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: .3em .9em; }
+.rel-det summary { cursor: pointer; font-weight: 700; min-height: 40px; display: flex; align-items: center; }
+.rel-leyenda dt { font-weight: 700; margin-top: .4em; }
+.rel-leyenda dd { margin: 0 0 .3em; color: var(--tinta-suave); }
+.rel-lista { display: grid; gap: .8rem; }
+.rel-item { border: 2px solid var(--borde); border-radius: 12px; padding: .6em 1em .8em; margin: 0; background: #fff; }
+.rel-item legend { font-weight: 600; padding: 0 .3em; }
+.rel-item.correcto { border-color: var(--verde); }
+.rel-item.incorrecto { border-color: var(--terracota); }
+.rel-fuente, .resumen { font-size: .92em; color: var(--tinta-suave); margin: .2em 0 .5em; }
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.chips input[type=radio] { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chip {
+  display: inline-flex; align-items: center; min-height: 40px; padding: .35em .85em; cursor: pointer;
+  border: 2px solid var(--borde); border-radius: 999px; background: var(--papel); font-weight: 600; font-size: .92em;
+}
+.chip:hover { border-color: var(--teal); }
+.chips input:checked + .chip { background: var(--teal); border-color: var(--teal); color: #fff; }
+.chips input:focus-visible + .chip { outline: 3px solid var(--foco); outline-offset: 2px; }
+.chips input:disabled + .chip { cursor: default; }
+.chip-btn {
+  font: inherit; font-weight: 600; font-size: .9em; cursor: pointer;
+  min-height: 40px; padding: .3em .85em; border-radius: 999px;
+  border: 2px solid var(--borde); background: var(--papel); color: var(--tinta);
+}
+.chip-btn.on { background: var(--teal); border-color: var(--teal); color: #fff; }
+.chip-btn:disabled { opacity: .4; cursor: not-allowed; }
+.retro { margin-top: .5em; padding: .5em .8em; border-radius: 8px; font-size: .95em; display: flex; gap: .3em; align-items: baseline; flex-wrap: wrap; }
+.retro .texto { flex: 1 1 20em; }
+.retro.ok { background: var(--verde-claro); border-left: 4px solid var(--verde); }
+.retro.no { background: var(--rojo-claro); border-left: 4px solid var(--terracota); }
+
+/* ---------- Deliberación ---------- */
+.del-cabecera { position: sticky; top: -1rem; z-index: 2; background: var(--papel); padding: .2rem 0 .5rem; margin-top: -.2rem; border-bottom: 1px solid var(--borde); }
+.del-pregunta { font-weight: 600; margin-bottom: .5rem; }
+.del-pregunta .etq { color: var(--teal); }
+.del-pasos { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: .35rem; }
+.del-paso {
+  font: inherit; font-size: .9em; font-weight: 600; cursor: pointer;
+  min-height: 40px; padding: .3em .8em; border-radius: 999px;
+  border: 2px solid var(--borde); background: #fff; color: var(--tinta);
+}
+.del-paso .n { display: inline-grid; place-items: center; width: 1.5em; height: 1.5em; border-radius: 50%; background: var(--papel-2); font-size: .85em; }
+.del-paso.hecho .n { background: var(--verde); color: #fff; }
+.del-paso.actual { border-color: var(--teal); background: var(--teal); color: #fff; }
+.del-paso.actual .n { background: #fff; color: var(--teal); }
+.del-paso:disabled { opacity: .5; cursor: not-allowed; }
+.del-titulo { margin-top: 1rem; font-size: 1.2rem; }
+.del-fase h4 { margin: 1.2rem 0 .5rem; color: var(--teal); font-size: 1.05rem; }
+.del-fase .rel-item { margin-bottom: .7rem; }
+.del-fase > .casilla { background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: .5em .8em; margin-bottom: .4rem; flex-wrap: wrap; }
+.del-fase .casilla .retro-slot { flex-basis: 100%; }
+.partes { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin: .6rem 0 1rem; }
+.parte { border: 2px solid var(--borde); border-radius: 999px; padding: .2em .8em; font-size: .9em; background: #fff; }
+.parte.cubierta { border-color: var(--verde); background: var(--verde-claro); font-weight: 600; }
+.valor-fila { background: #fff; border: 1px solid var(--borde); border-radius: 12px; padding: .6em .9em; margin-bottom: .5rem; display: grid; gap: .4rem; }
+.valor-nombre { display: flex; gap: .6em; align-items: flex-start; }
+.valor-nombre label { cursor: pointer; }
+.cursos { display: grid; gap: .5rem; }
+.curso { background: #fff; border: 2px solid var(--borde); border-radius: 12px; padding: .6em .9em; }
+.curso p { margin-bottom: .4em; }
+.curso.marcado { border-color: var(--mostaza); background: var(--mostaza-claro); }
+.curso.casilla { display: flex; flex-wrap: wrap; }
+.curso.casilla .retro-slot { flex-basis: 100%; }
+.extremos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: .6rem; }
+.curso.extremo { border-color: var(--terracota); }
+.lesiona .etq { font-weight: 700; color: var(--terracota); }
+.espectro { list-style: none; padding: 0; margin: .4rem 0; display: flex; flex-wrap: wrap; gap: .4rem; align-items: stretch; position: relative; }
+.espectro li { flex: 1 1 140px; background: var(--verde-claro); border: 2px solid var(--verde); border-radius: 10px; padding: .45em .6em; font-size: .9em; font-weight: 600; }
+.espectro li.polo { background: var(--rojo-claro); border-color: var(--terracota); }
+.razones { display: grid; gap: .3rem; }
+.razones .casilla { background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: .5em .8em; }
+.propuesta { background: var(--papel-2); border-radius: 12px; padding: .6em 1em; margin: .6rem 0 1rem; }
+.propuesta h4 { margin-top: .4rem; }
+.respuestas { display: grid; gap: .4rem; margin: .4rem 0 1rem; }
+.respuesta {
+  font: inherit; text-align: left; cursor: pointer; min-height: 44px; padding: .55em .9em;
+  border: 2px solid var(--borde); border-radius: 10px; background: #fff; color: var(--tinta);
+}
+.respuesta:hover { border-color: var(--teal); background: var(--verde-claro); }
+.tu-respuesta { background: var(--mostaza-claro); border-radius: 8px; padding: .5em .8em; }
+.prueba { border-bottom: 1px solid var(--borde); padding-bottom: .6rem; margin-bottom: .8rem; }
+.bloqueo .voz { background: var(--papel-doc); }
+
+.rub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .7rem; margin: 1rem 0; }
+.rub-item { background: #fff; border: 2px solid var(--borde); border-radius: 12px; padding: .8em 1em; }
+.rub-item h4 { margin: 0 0 .2em; color: var(--tinta); }
+.rub-nivel { display: inline-block; font-weight: 800; border-radius: 999px; padding: .1em .7em; font-size: .9em; }
+.nivel-solido { border-color: var(--verde); }
+.nivel-solido .rub-nivel { background: var(--verde); color: #fff; }
+.nivel-desarrollo { border-color: var(--mostaza); }
+.nivel-desarrollo .rub-nivel { background: var(--mostaza); color: #1b1b1b; }
+.nivel-inicial { border-color: var(--terracota); }
+.nivel-inicial .rub-nivel { background: var(--terracota); color: #fff; }
+.rub-detalle { font-size: .85em; color: var(--tinta-suave); margin-top: .5em; }
+
+/* ---------- Cierre ---------- */
+.cierre h3 { color: var(--teal); margin-top: 1rem; }
+.reflexion { margin-bottom: 1rem; }
+.reflexion label { display: block; font-weight: 600; margin-bottom: .3em; }
+.quiz-item { border: 2px solid var(--borde); border-radius: 12px; padding: .6em 1em .8em; margin: 0 0 .8rem; background: #fff; }
+.quiz-item legend { font-weight: 600; padding: 0 .3em; }
+.completo .texto { font-size: 1.05rem; }

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Comité · Aventura de bioética</title>
+  <meta name="description" content="Aventura gráfica educativa de bioética para 3° y 4° medio.">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/interfaz.css">
+  <link rel="stylesheet" href="css/minijuegos.css">
+</head>
+<body>
+  <div id="anuncios" class="sr" aria-live="polite"></div>
+
+  <section id="pantalla-portada" class="pantalla"></section>
+  <section id="pantalla-registro" class="pantalla" hidden></section>
+  <section id="pantalla-capitulos" class="pantalla" hidden></section>
+  <section id="pantalla-resumen" class="pantalla" hidden></section>
+
+  <section id="pantalla-juego" class="pantalla" hidden>
+    <header id="barra">
+      <p id="barra-cap" class="barra-cap"></p>
+      <nav class="barra-botones" aria-label="Herramientas">
+        <button id="btn-carpeta" class="btn-barra" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h7l2 2h9v11H3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span class="etq">Carpeta</span> <span id="carpeta-n" class="contador">0</span>
+        </button>
+        <button id="btn-cuaderno" class="btn-barra" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h12a2 2 0 0 1 2 2v16H7a2 2 0 0 1-2-2zM5 19a2 2 0 0 1 2-2h12M9 7h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span class="etq">Cuaderno</span>
+        </button>
+        <button id="btn-glosario" class="btn-barra" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5l5 0 3 14 3-14 5 0v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span class="etq">Glosario</span>
+        </button>
+        <button id="btn-pista" class="btn-barra" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+          <span class="etq">Pista</span>
+        </button>
+        <button id="btn-resaltar" class="btn-barra" type="button" aria-pressed="false" title="Resaltar zonas (tecla H)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="etq">Resaltar <kbd>H</kbd></span>
+        </button>
+        <button id="btn-ajustes" class="btn-barra" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="etq">Ajustes</span>
+        </button>
+        <button id="btn-menu" class="btn-barra" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"/></svg>
+          <span class="etq">Menú</span>
+        </button>
+      </nav>
+    </header>
+    <div id="objetivo" aria-live="polite"></div>
+    <main id="escenario">
+      <div id="marco">
+        <div id="arte" aria-hidden="true"></div>
+        <div id="zonas" role="group" aria-label="Zonas interactivas"></div>
+      </div>
+    </main>
+    <footer id="narracion" aria-live="polite"></footer>
+  </section>
+
+  <dialog id="conversacion" class="conversacion" aria-labelledby="conv-nombre"></dialog>
+
+  <noscript><p class="noscript">Este juego necesita JavaScript activado en el navegador.</p></noscript>
+
+  <!-- 1. Núcleo (debe ir primero) -->
+  <script src="motor/nucleo.js"></script>
+
+  <!-- 2. DATOS EDITABLES: textos, casos, datos legales -->
+  <script src="datos/config.js"></script>
+  <script src="datos/legal.js"></script>
+  <script src="datos/comite.js"></script>
+  <script src="datos/glosario.js"></script>
+  <script src="datos/cuaderno.js"></script>
+  <script src="datos/guia-docente.js"></script>
+  <script src="datos/cap1.js"></script>
+
+  <!-- 3. Arte -->
+  <script src="arte/paleta.js"></script>
+  <script src="arte/personajes.js"></script>
+  <script src="arte/escenas.js"></script>
+
+  <!-- 4. Motor -->
+  <script src="motor/estado.js"></script>
+  <script src="motor/acciones.js"></script>
+  <script src="motor/interfaz.js"></script>
+  <script src="motor/accesibilidad.js"></script>
+  <script src="motor/escena.js"></script>
+  <script src="motor/dialogo.js"></script>
+  <script src="motor/pistas.js"></script>
+  <script src="motor/minijuegos/base.js"></script>
+  <script src="motor/minijuegos/lineaTiempo.js"></script>
+  <script src="motor/minijuegos/relacionar.js"></script>
+  <script src="motor/deliberacion.js"></script>
+  <script src="motor/cierre.js"></script>
+  <script src="motor/exportar.js"></script>
+  <script src="motor/docente.js"></script>
+  <script src="motor/principal.js"></script>
+</body>
+</html>
