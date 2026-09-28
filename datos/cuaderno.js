@@ -46,6 +46,42 @@ BIO.datos.cuaderno = {
     referencia: "Diego Gracia, *Procedimientos de decisión en ética clínica* (1991).",
     ejemplo: "Nadie puede exigir un tratamiento que dañe a otros (nivel 1), pero cada persona define qué es bueno para su propia vida (nivel 2)."
   },
+  consentimiento_elementos: {
+    concepto: "Los elementos del consentimiento informado",
+    definicion: "Para que un consentimiento sea válido, la persona debe tener **capacidad** para decidir, recibir **información** suficiente y comprensible (riesgos, beneficios y alternativas, incluida la de no tratarse), **comprenderla**, decidir de manera **libre y voluntaria** y **expresar** su decisión. Es un proceso de comunicación, no un trámite: la firma solo deja constancia.",
+    referencia: "Beauchamp y Childress, *Principles of Biomedical Ethics*; Ley 20.584, art. 14.",
+    ejemplo: "Joaquín firmó un documento hace dos años, pero no ha podido preguntar a solas qué pasa si sangra: la información y la voluntariedad todavía deben asegurarse."
+  },
+  capacidad_4: {
+    concepto: "Las cuatro habilidades de la capacidad",
+    definicion: "Un modelo muy usado evalúa si la persona puede: 1) **comprender** la información relevante; 2) **apreciar** cómo se aplica a su propia situación; 3) **razonar**, comparando opciones según sus valores; y 4) **expresar una elección** estable. La capacidad es específica para cada decisión y puede fluctuar.",
+    referencia: "Paul Appelbaum y Thomas Grisso (1988), «Assessing patients' capacities to consent to treatment».",
+    ejemplo: "Elena tiene un diagnóstico de deterioro cognitivo leve, pero explica con sus palabras qué pasaría si no se opera y por qué lo prefiere."
+  },
+  escala_movil: {
+    concepto: "Escala móvil de la capacidad",
+    definicion: "Propuesta según la cual la exigencia para considerar capaz a alguien debería aumentar cuanto más graves sean las consecuencias de su decisión. Es útil para calibrar el cuidado de la evaluación, pero se critica porque podría usarse para declarar «incapaz» a quien simplemente decide distinto de lo que el equipo prefiere.",
+    referencia: "James Drane (1985), «The many faces of competency».",
+    ejemplo: "Para aceptar un analgésico basta una evaluación simple; para rechazar una cirugía de cadera conviene una conversación más detenida."
+  },
+  paternalismo: {
+    concepto: "Paternalismo fuerte y débil",
+    definicion: "El **paternalismo fuerte** impone una decisión a una persona capaz e informada «por su bien». El **paternalismo débil** solo interviene cuando hay dudas razonables sobre si la decisión es realmente libre, informada o tomada con capacidad, precisamente para asegurarlo. El primero es difícil de justificar ante personas capaces; el segundo es más aceptado.",
+    referencia: "Joel Feinberg, *Harm to Self* (1986); Beauchamp y Childress.",
+    ejemplo: "Conversar a solas con Joaquín para confirmar que su decisión es libre no es imponerle nada; transfundirlo contra su voluntad sí lo sería."
+  },
+  limite_rechazo: {
+    concepto: "Rechazar un tratamiento no es buscar la muerte",
+    definicion: "Rechazar un tratamiento (por ejemplo, una transfusión) es ejercer el derecho a decidir qué se hace con el propio cuerpo, aunque tenga riesgos. Es distinto de pedir que se acelere la muerte. La Ley 20.584 reconoce lo primero y excluye lo segundo. Esta distinción será central en el capítulo sobre el final de la vida.",
+    referencia: "Ley 20.584, art. 14.",
+    ejemplo: "Joaquín quiere vivir y operarse; lo que rechaza es una forma específica de tratamiento."
+  },
+  influencia: {
+    concepto: "Persuasión, manipulación y coacción",
+    definicion: "**Persuadir** es influir con razones y buena información: es legítimo y a veces un deber. **Manipular** es influir ocultando o distorsionando información o explotando emociones. **Coaccionar** es influir con amenazas. Solo la persuasión respeta la voluntariedad.",
+    referencia: "Beauchamp y Childress, capítulo sobre el respeto por la autonomía.",
+    ejemplo: "Explicarle a Joaquín los riesgos reales es persuadir; decirle que lo darán de alta si no acepta sangre sería coaccionar."
+  },
   criticas_principialismo: {
     concepto: "Críticas al principialismo",
     definicion: "Algunas críticas frecuentes: los principios son demasiado abstractos y no dicen qué hacer cuando chocan; pueden funcionar como una lista para marcar casillas; dejan fuera dimensiones como el cuidado, las relaciones, las virtudes o las tradiciones culturales y religiosas. Otras propuestas son la **casuística** (razonar desde casos paradigmáticos), la **ética del cuidado**, la **ética de las virtudes** y enfoques **personalistas**.",

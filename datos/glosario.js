@@ -64,6 +64,30 @@ BIO.datos.glosario = {
     termino: "Curso intermedio",
     definicion: "Opción que intenta respetar en la mayor medida posible todos los valores en conflicto, en lugar de sacrificar uno por completo como hacen los cursos extremos."
   },
+  capacidad: {
+    termino: "Capacidad para decidir",
+    definicion: "Aptitud de una persona para tomar una decisión concreta en un momento dado: comprender la información, apreciar cómo se aplica a su situación, razonar según sus valores y expresar una elección. Se evalúa para cada decisión; un diagnóstico por sí solo no la elimina."
+  },
+  paternalismo: {
+    termino: "Paternalismo",
+    definicion: "Imponer una decisión a una persona capaz, invocando su propio bien, en contra de su voluntad o sin su participación."
+  },
+  voluntariedad: {
+    termino: "Voluntariedad",
+    definicion: "Condición de una decisión tomada sin coacción ni manipulación. Persuadir con razones es legítimo; presionar con amenazas, engaños o chantaje emocional no lo es."
+  },
+  coaccion: {
+    termino: "Coacción",
+    definicion: "Presión que se ejerce sobre alguien mediante una amenaza, explícita o implícita, para que decida algo. Anula la voluntariedad del consentimiento."
+  },
+  directivas_anticipadas: {
+    termino: "Directivas o voluntades anticipadas",
+    definicion: "Documento en que una persona deja indicadas sus decisiones sobre tratamientos médicos para situaciones en que no pueda expresarlas."
+  },
+  objecion_conciencia: {
+    termino: "Objeción de conciencia",
+    definicion: "Negativa de un profesional a realizar un acto por razones morales o religiosas profundas. Su alcance legal varía según el país y el tipo de acto; en ningún caso debería dejar al paciente sin atención."
+  },
   anonimizacion: {
     termino: "Anonimización",
     definicion: "Proceso de eliminar de un dato todo lo que permita identificar a la persona. En comunidades pequeñas es más difícil de lo que parece: combinaciones de detalles pueden delatar a alguien."

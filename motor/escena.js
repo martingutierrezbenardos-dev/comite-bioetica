@@ -56,7 +56,7 @@
     (esc.hotspots || []).forEach(function (h) {
       if (!BIO.cumple(h.si)) return;
       const visto = !!cap.vistas[esc.id + "." + h.id];
-      const clases = ["hotspot", h.tipo || "objeto", visto ? "visto" : ""].join(" ");
+      const clases = ["hotspot", h.tipo || "objeto", visto ? "visto" : "", h.etiquetaArriba ? "etq-arriba" : ""].join(" ");
       const b = el("button", {
         class: clases,
         type: "button",
@@ -120,7 +120,7 @@
     try {
       BIO.cap().vistas[esc.id + "." + h.id] = true;
       if (h.texto) BIO.ui.narrar(h.texto, h.etiqueta);
-      await BIO.ejecutar(h.acciones);
+      await BIO.ejecutar(h.acciones, { releer: true });
     } finally {
       E.ocupado = false;
       E.refrescar();

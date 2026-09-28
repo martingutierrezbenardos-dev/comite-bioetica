@@ -45,6 +45,43 @@ BIO.datos.legal = {
     verificar: true
   },
 
+  /* ---------- Capítulo 2: consentimiento y rechazo de tratamientos ---------- */
+  ley_20584_consentimiento: {
+    titulo: "Ley 20.584: consentimiento y rechazo (art. 14)",
+    resumen: "Toda persona tiene derecho a **otorgar o denegar su voluntad** para someterse a cualquier procedimiento o tratamiento vinculado a su atención de salud. Para ejercerlo debe recibir información adecuada, suficiente y comprensible. Por regla general el consentimiento es verbal, pero debe constar **por escrito** en intervenciones quirúrgicas y otros procedimientos invasivos o de riesgo relevante. El rechazo de un tratamiento **no puede tener como objetivo la aceleración artificial de la muerte**, la realización de prácticas eutanásicas o el auxilio al suicidio.",
+    fuente: "Ley 20.584, art. 14. www.bcn.cl/leychile",
+    vigente_a_la_fecha: "septiembre de 2026",
+    verificar: true
+  },
+  ley_20584_excepciones: {
+    titulo: "Ley 20.584: cuándo se puede actuar sin consentimiento (art. 15)",
+    resumen: "La ley permite actuar sin la manifestación de voluntad del paciente en situaciones excepcionales: cuando no aplicar el procedimiento suponga un riesgo para la salud pública; cuando la condición de la persona implique un riesgo vital o una secuela funcional grave de atención inmediata e impostergable, y la persona no esté en condiciones de expresar su voluntad ni sea posible obtener el consentimiento de su representante; y cuando la persona esté en incapacidad de manifestar su voluntad y no sea posible obtenerla de su representante.",
+    fuente: "Ley 20.584, art. 15. www.bcn.cl/leychile",
+    vigente_a_la_fecha: "septiembre de 2026",
+    verificar: true
+  },
+  ley_20584_comites: {
+    titulo: "Ley 20.584: consulta a comités de ética (art. 17)",
+    resumen: "Cuando el profesional tratante tiene dudas sobre la competencia de la persona para decidir, o cuando la decisión de rechazar un tratamiento podría tener consecuencias graves, puede solicitarse la opinión de un comité de ética. Su pronunciamiento tiene carácter de **recomendación**: no reemplaza la decisión del paciente ni la del equipo.",
+    fuente: "Ley 20.584, art. 17, y reglamento de comités de ética asistencial. www.bcn.cl/leychile",
+    vigente_a_la_fecha: "septiembre de 2026",
+    verificar: true
+  },
+  jurisprudencia_transfusiones: {
+    titulo: "Tribunales y transfusiones (nota para el docente)",
+    resumen: "Antes y después de la Ley 20.584, tribunales chilenos han resuelto recursos de protección sobre transfusiones a testigos de Jehová en sentidos distintos; en varios casos se autorizó la transfusión invocando el derecho a la vida. Es un punto jurídicamente discutido, aunque el consenso bioético actual respalda el derecho de un adulto capaz a rechazarla.",
+    fuente: "Jurisprudencia de Cortes de Apelaciones y Corte Suprema; revisar casos recientes.",
+    vigente_a_la_fecha: "septiembre de 2026",
+    verificar: true
+  },
+  objecion_conciencia: {
+    titulo: "Objeción de conciencia",
+    resumen: "En Chile, la objeción de conciencia de profesionales de la salud está regulada expresamente para la interrupción voluntaria del embarazo en tres causales (Ley 21.030). Fuera de ese ámbito, su alcance es discutido; en todo caso, la convicción de un profesional no puede dejar a un paciente sin atención.",
+    fuente: "Ley 21.030 (2017) y su reglamento. www.bcn.cl/leychile",
+    vigente_a_la_fecha: "septiembre de 2026",
+    verificar: true
+  },
+
   /* ---------- Datos históricos del Capítulo 1 (verificar cifras y fechas) ---------- */
   historico_nuremberg: {
     titulo: "Juicio de los médicos y Código de Núremberg",

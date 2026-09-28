@@ -31,6 +31,7 @@ function validarDatos(BIO) {
         switch (p.tipo) {
           case "bandera": banderasPuestas[p.arg] = true; break;
           case "quitar": break;
+          case "leer": if (!evid[p.arg]) E(P + donde + ": evidencia «" + p.arg + "» no existe"); break;
           case "evidencia": if (!evid[p.arg]) E(P + donde + ": evidencia «" + p.arg + "» no existe"); evObtenibles[p.arg] = true; break;
           case "concepto": if (!D.cuaderno[p.arg]) E(P + donde + ": concepto «" + p.arg + "» no existe en cuaderno.js"); break;
           case "glosario": if (!D.glosario[p.arg]) E(P + donde + ": término «" + p.arg + "» no existe en glosario.js"); break;
@@ -46,6 +47,7 @@ function validarDatos(BIO) {
     }
     function condiciones(lista, donde) {
       (lista || []).forEach(function (c0) {
+        if (c0.indexOf("|") >= 0) { condiciones(c0.split("|").map(function (x) { return x.trim(); }), donde); return; }
         const p = partir(c0.replace(/^!/, ""));
         if (p.tipo === "bandera") banderasUsadas[p.arg] = donde;
         else if (p.tipo === "evidencia" && !evid[p.arg]) E(P + donde + ": condición sobre evidencia inexistente «" + p.arg + "»");
@@ -115,6 +117,11 @@ function validarDatos(BIO) {
       if (m.tipo === "relacionar") {
         const cats = m.categorias.map(function (x) { return x.id; });
         m.items.forEach(function (it) { it.correctas.forEach(function (k) { if (cats.indexOf(k) < 0) E(P + d + " › " + it.id + ": categoría «" + k + "» no existe"); }); });
+      }
+      if (m.tipo === "entrevista") {
+        hablante(m.persona, d); if (m.guia) hablante(m.guia, d);
+        m.criterios.forEach(function (k) { if (!k.preguntas.some(function (q) { return q.buena; })) E(P + d + " › " + k.id + ": ninguna pregunta es buena (no se puede terminar)"); });
+        if (m.veredicto.opciones.filter(function (o) { return o.correcta; }).length !== 1) E(P + d + ": el veredicto debe tener exactamente 1 opción correcta");
       }
       if (m.tipo === "lineaTiempo") (m.distractores || []).forEach(function (k) { if (!evid[k]) E(P + d + ": distractor «" + k + "» no existe"); evObtenibles[k] = evObtenibles[k] || false; });
     });

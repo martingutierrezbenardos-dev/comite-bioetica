@@ -2,7 +2,7 @@
    ACCIONES / EFECTOS
    Los datos describen efectos como textos "tipo:argumento":
      bandera:x         quitar:x          aviso:texto (mensaje breve)
-     evidencia:id      concepto:id       glosario:id       texto:narración
+     evidencia:id      leer:id (vuelve a mostrar un documento)      concepto:id       glosario:id       texto:narración
      ir:escena         dialogo:id        minijuego:id
      deliberacion      cierre            completar
    ========================================================================= */
@@ -18,11 +18,13 @@
     return { tipo: i < 0 ? ef : ef.slice(0, i), arg: i < 0 ? "" : ef.slice(i + 1) };
   };
 
-  BIO.ejecutar = async function (lista) {
+  /* op.releer: al hacer clic directamente en un objeto, se vuelve a mostrar
+     un documento que ya está en la carpeta (para releerlo). */
+  BIO.ejecutar = async function (lista, op) {
     if (!lista) return;
     if (typeof lista === "string") lista = [lista];
     for (const ef of lista) {
-      try { await BIO.aplicar(ef); }
+      try { await BIO.aplicar(ef, op); }
       catch (e) { console.error("Error al aplicar efecto", ef, e); }
       if (BIO.ui.actualizarBarra) BIO.ui.actualizarBarra();
     }
@@ -30,7 +32,7 @@
     if (BIO.ui.actualizarBarra) BIO.ui.actualizarBarra();
   };
 
-  BIO.aplicar = async function (ef) {
+  BIO.aplicar = async function (ef, op) {
     const p = BIO.partirEfecto(ef), tipo = p.tipo, arg = p.arg;
     const cap = BIO.cap();
     switch (tipo) {
@@ -42,9 +44,10 @@
         const nueva = cap.evidencias.indexOf(arg) < 0;
         if (!BIO.evidencia(arg)) { console.error("Evidencia no encontrada:", arg); break; }
         if (nueva) { cap.evidencias.push(arg); BIO.guardado.guardar(); }
-        await BIO.ui.mostrarEvidencia(arg, nueva);
+        if (nueva || (op && op.releer)) await BIO.ui.mostrarEvidencia(arg, nueva);
         break;
       }
+      case "leer": if (BIO.evidencia(arg)) await BIO.ui.mostrarEvidencia(arg, false); break;
       case "concepto": desbloquear("conceptos", BIO.datos.cuaderno, arg, "Nueva entrada en tu cuaderno de conceptos", "concepto"); break;
       case "glosario": desbloquear("glosario", BIO.datos.glosario, arg, "Nuevo término en el glosario", "termino"); break;
       case "ir": await BIO.escena.ir(arg); break;

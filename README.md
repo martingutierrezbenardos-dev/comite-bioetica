@@ -2,7 +2,7 @@
 
 Aventura gráfica educativa de tipo *point and click* para estudiantes de 3° y 4° medio. El estudiante participa como observador u observadora en el Comité de Ética Asistencial del Hospital Regional de Río Arrayán, un hospital ficticio del sur de Chile. Allí aprende bioética con el método deliberativo de Diego Gracia.
 
-> **Estado actual:** el **Capítulo 1** está completo y probado. Los capítulos 2 a 5 aparecen en el menú como «En preparación».
+> **Estado actual:** los **capítulos 1 y 2** están completos y probados. Los capítulos 3 a 5 aparecen en el menú como «En preparación».
 
 ---
 
@@ -37,6 +37,7 @@ Todo el contenido está en la carpeta **`datos/`**. No necesitas tocar la lógic
 | `datos/cuaderno.js` | Entradas del cuaderno de conceptos: concepto, referencia y ejemplo. |
 | `datos/guia-docente.js` | Guía docente: objetivos, preguntas para la discusión, errores frecuentes y sugerencias. |
 | `datos/cap1.js` | El Capítulo 1 completo: escenas, documentos, diálogos, puzles, deliberación y cierre. |
+| `datos/cap2.js` | El Capítulo 2 completo, con sus personajes propios (`personajes`). |
 
 ### Reglas para editar sin romper nada
 
@@ -65,6 +66,7 @@ Las zonas clicables (`hotspots`), los diálogos y los puzles usan **efectos** es
 | Efecto | Qué hace |
 |---|---|
 | `evidencia:id` | Guarda un documento en la carpeta y lo muestra. |
+| `leer:id` | Vuelve a mostrar un documento que ya está en la carpeta. |
 | `dialogo:id` | Abre una conversación. |
 | `minijuego:id` | Abre un puzle. |
 | `ir:escena` | Cambia de lugar. |
@@ -93,7 +95,7 @@ Las zonas clicables se ubican en **porcentajes** del dibujo (`x`, `y`, `w`, `h`)
 | # | Título | Conceptos | Estado |
 |---|---|---|---|
 | 1 | El archivo: ¿por qué existe la bioética? | Código de Núremberg, Tuskegee, Declaración de Helsinki, Informe Belmont, cuatro principios de Beauchamp y Childress, deberes *prima facie*, método deliberativo de Gracia, hechos y opiniones, cursos extremos e intermedios, niveles de Gracia, críticas al principialismo | **Jugable** |
-| 2 | La firma | Consentimiento informado, capacidad, paternalismo, rechazo de tratamiento, Ley 20.584 | En preparación |
+| 2 | La firma: consentimiento informado y autonomía | Elementos del consentimiento informado, capacidad (cuatro habilidades de Appelbaum y Grisso), escala móvil, paternalismo fuerte y débil, persuasión, manipulación y coacción, rechazo de tratamiento y su límite legal, objeción de conciencia, Ley 20.584 | **Jugable** |
 | 3 | Una cama | Justicia distributiva, criterios de asignación, triaje, velo de ignorancia | En preparación |
 | 4 | El final | Limitación del esfuerzo terapéutico, cuidados paliativos, doble efecto, eutanasia | En preparación |
 | 5 | Más allá del paciente (opcional) | One Health, 3R, resistencia antimicrobiana, bien común | En preparación |
@@ -106,6 +108,20 @@ Las zonas clicables se ubican en **porcentajes** del dibujo (`x`, `y`, `w`, `h`)
 4. **Caso.** Descubre la **caja 7**, con un estudio **ficticio** hecho en el propio hospital en 1968. Puede hablar con Tomás, que aporta un testimonio.
 5. **Sesión del comité.** Delibera con el método completo de 5 fases sobre qué hacer con ese material en la muestra.
 6. **Cierre.** El comité discute las críticas al principialismo y los niveles de Gracia. Luego el estudiante escribe 3 reflexiones y responde 3 preguntas de comprobación.
+
+### Capítulo 2 en breve (unos 12 a 15 minutos)
+
+1. **Encargo.** Un cirujano consulta al comité: Joaquín Saavedra, 52 años y testigo de Jehová, rechaza las transfusiones antes de una cirugía de colon programada.
+2. **Exploración.** El estudiante recorre seis lugares:
+   - el **preoperatorio**, con Joaquín, su ficha, su documento de directivas y la anestesióloga;
+   - la **sala de espera**, con la esposa, la hija, un comentario de pasillo y un afiche;
+   - **trabajo social**, con Marisol y el protocolo del hospital;
+   - la **sala multiconfesional**, con Samuel, anciano de la congregación.
+3. **Contrapunto (puzle de capacidad).** En la sala 214, la Sra. Elena, de 79 años y con deterioro cognitivo leve, rechaza una cirugía de cadera, y su hijo quiere firmar por ella. El estudiante elige qué preguntar para evaluar las **cuatro habilidades** y concluye que **un diagnóstico no equivale a incapacidad**.
+4. **Sesión del comité.** La deliberación completa sobre el caso de Joaquín. Hay dos cursos **bloqueados**:
+   - transfundir contra su voluntad, por ser contrario al consenso bioético y al derecho a rechazar tratamientos;
+   - un **falso intermedio**: firmar el rechazo pero transfundir a escondidas.
+5. **Cierre.** Conversación sobre el paternalismo y el límite legal del rechazo de tratamientos. Luego 3 reflexiones y 3 preguntas de comprobación.
 
 ## 5. Cómo evalúa el juego
 
@@ -166,6 +182,13 @@ Todos están resumidos con palabras propias, **no** son citas textuales. En `dat
 | National Research Act / Belmont | Ley de 1974 que crea la comisión; el Informe Belmont se publicó en 1979 y menciona Tuskegee. | `cap1.js` → `ev_nra1974`, `ev_belmont` |
 | Beauchamp y Childress | Primera edición de 1979; Beauchamp participó en la redacción del Informe Belmont. | `cap1.js` → `ev_beauchamp` |
 | Diego Gracia | Niveles de principios («ética de mínimos» y «ética de máximos») en *Procedimientos de decisión en ética clínica* (1991). | `cuaderno.js` → `niveles_gracia`; diálogo `cierre_comite` |
+| Ley 20.584, art. 14 | Derecho a otorgar o denegar el consentimiento; consentimiento escrito en cirugías; el rechazo no puede tener por objetivo acelerar artificialmente la muerte. | `legal.js` → `ley_20584_consentimiento`; diálogo `cierre_comite` y cursos de `cap2.js` |
+| Ley 20.584, art. 15 | Excepciones: salud pública, urgencia vital sin posibilidad de consentir, incapacidad sin representante. | `legal.js` → `ley_20584_excepciones` |
+| Ley 20.584, art. 17 | Consulta a comités de ética ante dudas sobre competencia o rechazo; sus pronunciamientos son recomendaciones. | `legal.js` → `ley_20584_comites` |
+| Jurisprudencia sobre transfusiones | Los tribunales chilenos han resuelto de forma variable; en varios casos autorizaron la transfusión. Paula lo menciona en el cierre. | `legal.js` → `jurisprudencia_transfusiones`; diálogo `cierre_comite` de `cap2.js` |
+| Objeción de conciencia | Regulada expresamente en la Ley 21.030; fuera de ese ámbito su alcance es discutido. | `legal.js` → `objecion_conciencia`; curso I4 de `cap2.js` |
+| Posición de los testigos de Jehová | Rechazan sangre completa y sus cuatro componentes principales; fracciones y recuperador celular son decisión de conciencia individual. | `cap2.js` → `ev_tarjeta`, diálogos de Joaquín y Samuel |
+| Appelbaum y Grisso (1988); Drane (1985) | Cuatro habilidades de la capacidad; escala móvil. | `cuaderno.js` → `capacidad_4`, `escala_movil` |
 | Líneas de ayuda | Salud Responde 600 360 7777; línea de prevención del suicidio *4141; SAMU 131. | `config.js` → `ayuda` (se usará en el Capítulo 4) |
 
 **Estado de la eutanasia en Chile (Capítulo 4, pendiente):** este dato irá en `datos/legal.js` con un campo «vigente a la fecha». **El docente lo verificará y actualizará** antes de usar ese capítulo, porque el proyecto de ley puede cambiar de estado.

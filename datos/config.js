@@ -9,6 +9,8 @@
      para separar párrafos y líneas que empiezan con "- " para listas.
    - {{forma masculina|forma femenina|forma neutra}} se ajusta a la forma de
      trato que eligió el estudiante. {nombre} pone su nombre.
+   En una zona clicable, etiquetaArriba: true muestra su nombre encima
+   (útil cuando dos zonas están muy juntas).
    Después de editar, abre herramientas/validar-datos.html para revisar.
    ========================================================================= */
 BIO.datos.config = {

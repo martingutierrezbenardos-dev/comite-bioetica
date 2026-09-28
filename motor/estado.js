@@ -133,12 +133,15 @@
   /* Condiciones escritas como texto en los datos:
      "bandera:x"  "!bandera:x"  "bandera:global.x"
      "evidencia:id"  "evidencias:id1,id2"  "grupo:nombre" (todas las del grupo)
-     "minijuego:id" (completado)  "visto:escena.hotspot" */
+     "minijuego:id" (completado)  "visto:escena.hotspot"
+     "a|b" se cumple si se cumple cualquiera de las dos */
   BIO.cumple = function (conds) {
     if (!conds) return true;
     if (typeof conds === "string") conds = [conds];
     const cap = BIO.cap();
     return conds.every(function (c0) {
+      // "a|b": basta con que se cumpla una de las alternativas
+      if (c0.indexOf("|") >= 0) return c0.split("|").some(function (alt) { return BIO.cumple([alt.trim()]); });
       let c = c0, neg = false;
       if (c[0] === "!") { neg = true; c = c.slice(1); }
       const i = c.indexOf(":");

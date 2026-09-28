@@ -40,7 +40,9 @@
           if (!r || !r.completo) t += "no completada";
           else {
             t += "completada en " + (r.intentos || 1) + " intento(s)";
-            if (r.primerIntento) t += " (al primer intento: " + r.primerIntento.buenos + "/" + r.primerIntento.total + ")";
+            if (r.primerIntento) t += m.tipo === "entrevista"
+              ? " (criterios evaluados con una buena primera pregunta: " + r.primerIntento.buenos + "/" + r.primerIntento.total + ")"
+              : " (al primer intento: " + r.primerIntento.buenos + "/" + r.primerIntento.total + ")";
           }
           L.push(t);
         });

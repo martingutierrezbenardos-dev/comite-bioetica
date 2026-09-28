@@ -152,3 +152,12 @@
 .quiz-item { border: 2px solid var(--borde); border-radius: 12px; padding: .6em 1em .8em; margin: 0 0 .8rem; background: #fff; }
 .quiz-item legend { font-weight: 600; padding: 0 .3em; }
 .completo .texto { font-size: 1.05rem; }
+
+/* Entrevista (evaluación de capacidad) */
+.ent-criterio { border: 2px solid var(--borde); border-radius: 12px; padding: .7em 1em; margin-bottom: .8rem; background: #fff; }
+.ent-criterio.hecho { border-color: var(--verde); }
+.ent-criterio h3 { font-size: 1.05rem; color: var(--teal); margin-bottom: .2em; }
+.ent-ok { color: var(--verde); font-size: .9em; }
+.ent-turno { border-top: 1px dashed var(--borde); padding-top: .5rem; margin-top: .5rem; }
+.ent-pregunta { margin-bottom: .2em; }
+.ent-veredicto { margin-top: 1rem; }

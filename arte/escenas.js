@@ -8,11 +8,16 @@
   "use strict";
   const A = BIO.arte, P = A.P;
   A.escenas = A.escenas || {};
+  /* Utilidades compartidas con los archivos de escenas de otros capítulos */
 
   function svg(contenido) {
     return '<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' + contenido + "</svg>";
   }
-  function rasgos(id) { const c = BIO.datos.comite && BIO.datos.comite[id]; return (c && (c.figura || c.retrato)) || {}; }
+  function rasgos(id) {
+    const d = BIO.datosCap && BIO.datosCap();
+    const c = (d && d.personajes && d.personajes[id]) || (BIO.datos.comite && BIO.datos.comite[id]);
+    return (c && (c.figura || c.retrato)) || {};
+  }
   function fig(id, x, y, h, extra) { return A.figura(x, y, h, Object.assign({}, rasgos(id), extra || {})); }
   function texto(x, y, t, tam, color, peso, ancla) {
     return '<text x="' + x + '" y="' + y + '" font-family="system-ui, sans-serif" font-size="' + (tam || 24) + '" font-weight="' + (peso || 700) + '" fill="' + (color || P.tinta) + '" text-anchor="' + (ancla || "middle") + '">' + t + "</text>";
@@ -32,6 +37,8 @@
     for (let i = 0; i < 9; i++) s += '<line x1="' + (i * 200) + '" y1="' + y + '" x2="' + (i * 200 - 120) + '" y2="900" stroke="' + P.piso2 + '" stroke-width="3"/>';
     return s;
   }
+
+  A.util = { svg: svg, fig: fig, texto: texto, placa: placa, caja: caja, piso: piso };
 
   /* ---------- PORTADA: exterior del hospital bajo la lluvia ---------- */
   A.escenas.portada = function () {

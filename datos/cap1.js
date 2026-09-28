@@ -294,9 +294,9 @@ BIO.datos.cap1 = {
       nodos: {
         inicio: { habla: "narrador", texto: "La caja 7 sigue en el suelo. ¿Qué quieres volver a leer?",
           opciones: [
-            { texto: "Las fichas del estudio H-68", efectos: ["evidencia:ev_fondo_local"], ir: "inicio" },
-            { texto: "La nota del Dr. Bórquez", efectos: ["evidencia:ev_nota_borquez"], ir: "inicio" },
-            { texto: "El correo de la vecina", efectos: ["evidencia:ev_carta_nieta"], ir: "inicio" },
+            { texto: "Las fichas del estudio H-68", efectos: ["leer:ev_fondo_local"], ir: "inicio" },
+            { texto: "La nota del Dr. Bórquez", efectos: ["leer:ev_nota_borquez"], ir: "inicio" },
+            { texto: "El correo de la vecina", efectos: ["leer:ev_carta_nieta"], ir: "inicio" },
             { texto: "Dejar la caja", ir: "FIN" }
           ] }
       }

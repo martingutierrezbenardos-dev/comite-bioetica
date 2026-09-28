@@ -42,5 +42,37 @@ BIO.datos.guiaDocente = {
       "Aborde Tuskegee con sobriedad: el foco está en las decisiones institucionales y en la vulnerabilidad, no en detalles clínicos."
     ],
     notas: "El «Estudio H-68» y la caja 7 son **ficticios**. No aluden a ningún hecho real de la historia hospitalaria chilena. Los datos históricos y legales de este capítulo están listados en el README para su verificación."
+  },
+
+  cap2: {
+    objetivos: [
+      "Identificar los elementos del consentimiento informado: capacidad, información, comprensión, voluntariedad y expresión.",
+      "Reconocer el derecho de un adulto capaz a rechazar tratamientos y los límites que establece la Ley 20.584.",
+      "Evaluar la capacidad para decidir con las cuatro habilidades (comprender, apreciar, razonar y expresar una elección) y distinguir capacidad de diagnóstico.",
+      "Distinguir paternalismo fuerte y débil, y persuasión de manipulación y coacción.",
+      "Deliberar sobre un caso de rechazo de transfusión por motivos religiosos, respetando la mejor versión de todas las posiciones."
+    ],
+    preguntas: [
+      "¿Tiene el equipo de salud la obligación de operar a Joaquín sin sangre? ¿Y de derivarlo si no puede hacerlo con seguridad?",
+      "¿Qué diferencia hay entre respetar una creencia y compartirla?",
+      "¿Cuándo es legítimo que el equipo insista o persuada, y cuándo se vuelve presión?",
+      "¿Por qué evaluar la capacidad no es lo mismo que evaluar si la decisión nos parece buena?",
+      "Si la anestesióloga no se siente capaz de participar, ¿qué debería hacer la institución?"
+    ],
+    errores: [
+      "Creer que un diagnóstico (demencia, depresión, discapacidad) implica automáticamente incapacidad para decidir.",
+      "Pensar que el consentimiento es una firma y no un proceso de información y comprensión.",
+      "Suponer que quien rechaza una transfusión «no quiere tratarse» o «quiere morir».",
+      "Creer que la familia puede decidir por un adulto capaz.",
+      "Confundir el derecho a rechazar tratamientos con la eutanasia.",
+      "Tratar como irracional toda decisión basada en creencias religiosas."
+    ],
+    sugerencias: [
+      "Es posible que haya estudiantes testigos de Jehová u otras confesiones en el curso: establezca antes que se discuten decisiones y argumentos, no la verdad de una fe.",
+      "Pida a cada grupo que formule el mejor argumento de la posición contraria antes de defender la propia.",
+      "Use el caso de Elena para mostrar que la capacidad se evalúa con preguntas abiertas y no con preguntas de orientación («¿qué día es hoy?»).",
+      "El caso trata de un adulto. Los casos con **menores de edad** tienen un régimen legal y ético distinto y **no se abordan** en este capítulo; si surgen, conviene tratarlos aparte."
+    ],
+    notas: "Todos los personajes y el protocolo del hospital son ficticios. La jurisprudencia chilena sobre transfusiones ha sido variable; el juego lo menciona brevemente (ver datos/legal.js → jurisprudencia_transfusiones). En la deliberación, «transfundir contra su voluntad» se bloquea como contrario al consenso bioético y al derecho a rechazar tratamientos, no como un dato jurisprudencial cerrado."
   }
 };

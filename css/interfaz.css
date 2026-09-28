@@ -273,3 +273,4 @@ dialog::backdrop { background: rgba(18, 26, 30, .6); }
 /* Lluvia suave (se desactiva con animaciones reducidas) */
 @keyframes lluvia { from { transform: translate(6px, -36px); } to { transform: translate(-6px, 36px); } }
 svg .lluvia { animation: lluvia 1.3s linear infinite; }
+.hotspot.etq-arriba .hs-etiqueta { bottom: auto; top: -.4rem; transform: translate(-50%, -100%); }
